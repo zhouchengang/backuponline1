@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
+import com.gyf.immersionbar.ImmersionBar
 import com.r0adkll.slidr.Slidr
 import com.r0adkll.slidr.model.SlidrConfig
 import com.r0adkll.slidr.model.SlidrInterface
@@ -55,6 +56,13 @@ open class BaseActivity(Res: Int) : AppCompatActivity() {
             .build()
         slidrInterface = Slidr.attach(this, config)
         //showStatusBar()
+
+        ImmersionBar.with(this)
+            .transparentStatusBar()  //透明状态栏，不写默认透明色
+            .statusBarDarkFont(true)   //状态栏字体是深色，不写默认为亮色
+            .init();
+
+
     }
 
     //是否使用滑动返回
