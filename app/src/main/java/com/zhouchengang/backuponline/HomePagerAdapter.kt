@@ -11,7 +11,7 @@ import androidx.fragment.app.FragmentPagerAdapter
  */
 class HomePagerAdapter(fm: FragmentManager, behavior: Int) : FragmentPagerAdapter(fm, behavior) {
 
-    var tabname: Array<String> = arrayOf("关注", "道友")
+    var tabname: Array<String> = arrayOf("PAGE1", "PAGE2")
 
     override fun getPageTitle(position: Int): CharSequence? {
         return tabname[position]

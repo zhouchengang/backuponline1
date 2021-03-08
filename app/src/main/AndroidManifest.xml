@@ -72,6 +72,11 @@
             android:name="com.zhouchengang.backuponline.SettingActivity"
             android:label="@string/setting" />
 
+        <activity
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:name="com.zhouchengang.backuponline.AlbumActivity"
+            android:label="@string/album" />
+
 
         <service
             android:priority="888"

@@ -2,6 +2,7 @@
     <string name="app_name">在线备份</string>
     <string name="login">Login</string>
     <string name="setting">设置</string>
+    <string name="album">相册</string>
     <string name="web">Web</string>
     <string name="songlist">SongList</string>
 
