@@ -2,18 +2,14 @@ package com.zhouchengang.backuponline
 
 import android.content.Context
 import android.graphics.Color
-import android.icu.lang.UCharacter.IndicPositionalCategory.RIGHT
 import android.os.Bundle
-import android.util.Log
 import android.view.View
-import android.view.ViewGroup
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import com.gyf.immersionbar.ImmersionBar
 import com.r0adkll.slidr.Slidr
 import com.r0adkll.slidr.model.SlidrConfig
 import com.r0adkll.slidr.model.SlidrInterface
-import com.r0adkll.slidr.model.SlidrListener
 import com.r0adkll.slidr.model.SlidrPosition
 import com.zhouchengang.fileonlinelaunchapp.R
 import java.lang.reflect.Field
@@ -62,7 +58,7 @@ open class BaseActivity(Res: Int) : AppCompatActivity() {
             .statusBarDarkFont(true)   //状态栏字体是深色，不写默认为亮色
             .init();
 
-
+        overridePendingTransition(R.anim.transition_bottom_up, R.anim.transition_bottom_silent)
     }
 
     //是否使用滑动返回
@@ -105,6 +101,11 @@ open class BaseActivity(Res: Int) : AppCompatActivity() {
             e1.printStackTrace()
         }
         return statusBarHeight
+    }
+
+    override fun finish() {
+        super.finish()
+        overridePendingTransition(R.anim.transition_bottom_silent, R.anim.transition_bottom_down)
     }
 
 }

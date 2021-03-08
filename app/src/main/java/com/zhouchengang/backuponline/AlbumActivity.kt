@@ -8,5 +8,8 @@ import com.zhouchengang.fileonlinelaunchapp.R
  * @time 11:15.
  */
 class AlbumActivity : BaseActivity(R.layout.activity_album) {
+    override fun finish() {
+        super.finish()
+    }
 
 }
