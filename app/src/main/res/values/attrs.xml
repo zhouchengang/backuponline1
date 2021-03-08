@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="MyConstraintLayout">
+        <!--大标题-->
+        <attr name="title" format="string" />
+        <!--提示-->
+        <attr name="tip" format="string" />
+        <!--图标-->
+        <attr name="icon" format="reference" />
+        <!--下划线是否显示-->
+        <attr name="underline" format="boolean" />
+    </declare-styleable>
+
+</resources>

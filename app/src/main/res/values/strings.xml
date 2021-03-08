@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">在线备份</string>
+    <string name="login">Login</string>
+    <string name="setting">设置</string>
+    <string name="web">Web</string>
+    <string name="songlist">SongList</string>
+
+    <string name="action_search">Search</string>
+    <string name="action_settings">设置</string>
+    <string name="action_info">Info</string>
+    <string name="action_help">本地重复文件清除</string>
+
+</resources>

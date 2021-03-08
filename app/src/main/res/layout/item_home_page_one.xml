@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="0.5dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.zhouchengang.backuponline.MyConstraintLayout
+        android:id="@+id/iv_album_cover"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:id="@+id/tv_album_name"
+        android:layout_width="match_parent"
+        android:background="#FFBBBBBB"
+        android:layout_height="20dp"
+        android:singleLine="true"
+        android:ellipsize="start"
+        android:textSize="8sp"
+        android:gravity="start|center_vertical"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,23 @@
+<resources>
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <!--
+        <item name="android:windowTranslucentStatus">true</item> -->
+
+        <item name="colorPrimary">@color/white</item>
+        <item name="colorPrimaryDark">@color/white</item>
+        <item name="colorAccent">@color/white</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="ThemeOverlay.MaterialGallery.AppBarLayout" parent="@style/ThemeOverlay.MaterialComponents.ActionBar.Primary">
+
+    </style>
+
+<!--    //设置为true，意味着xml布局延伸到状态栏-->
+<!--    <item name="android:windowTranslucentStatus" >true</item>-->
+<!--    <item name="android:windowTranslucentNavigation" >false</item>-->
+
+</resources>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#6200EE</color>
+    <color name="colorPrimaryDark">#3700B3</color>
+    <color name="colorAccent">#6200EE</color>
+
+    <color name="remoteBackground">#AAAAAA</color>
+
+    <color name="purple_200">#BB86FC</color>
+    <color name="purple_500">#6200EE</color>
+    <color name="purple_700">#3700B3</color>
+
+    <color name="teal_200">#03DAC6</color>
+    <color name="teal_900">#018786</color>
+
+    <color name="red">#B00020</color>
+    <color name="red_light">#CF6679</color>
+
+    <color name="white">#FFFFFF</color>
+    <color name="pure_black">#000000</color>
+
+    <color name="pure_white">#FFFFFF</color>
+    <color name="my_black">#44666666</color>
+    <color name="black">#121212</color>
+
+    <color name="colorGray">#33000000</color>
+
+    <color name="logInfo">#4a90e2</color>
+
+    <color name="logWarn">#fedd56</color>
+
+    <color name="logError">#fe375f</color>
+</resources>

@@ -1,0 +1,86 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.zhouchengang.fileonlinelaunchapp">
+
+
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
+    <uses-permission android:name="android.permission.SYSTEM_OVERLAY_WINDOW"/>
+
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.DISABLE_KEYGUARD" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"></uses-permission>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"></uses-permission>
+
+    <uses-permission android:name="android.permission.WRITE_MEDIA_STORAGE"
+        tools:ignore="ProtectedPermissions" />
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"
+        tools:ignore="ProtectedPermissions" />
+
+    <application
+        android:usesCleartextTraffic="true"
+        android:allowBackup="true"
+        android:icon="@mipmap/weixin"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/weixin"
+        android:supportsRtl="true"
+        android:requestLegacyExternalStorage="true"
+        android:theme="@style/AppTheme">
+
+        <activity
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:name="com.zhouchengang.backuponline.FoneActivity"
+            android:label="@string/app_name">
+
+
+            <!-- android:excludeFromRecents="true" -->
+
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.MAIN" />-->
+
+<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+<!--            </intent-filter>-->
+        </activity>
+
+        <activity
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:name="com.zhouchengang.backuponline.HomeActivity"
+            android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:name="com.zhouchengang.backuponline.MainActivity"
+            android:label="@string/app_name">
+        </activity>
+
+
+        <activity
+            android:hardwareAccelerated="true"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:name="com.zhouchengang.backuponline.Fone2Activity"
+            android:label="@string/login" />
+
+        <activity
+            android:hardwareAccelerated="true"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:name="com.zhouchengang.backuponline.SettingActivity"
+            android:label="@string/setting" />
+
+
+        <service
+            android:priority="888"
+            android:name="com.zhouchengang.backuponline.MainService"
+            android:enabled="true"
+            android:exported="true" />
+
+
+
+    </application>
+
+</manifest>

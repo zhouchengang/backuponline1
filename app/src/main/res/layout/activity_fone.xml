@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:theme="@style/Theme.MaterialComponents.Light"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:screenOrientation="landscape"
+    tools:context="com.zhouchengang.backuponline.FoneActivity">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+                <com.google.android.material.appbar.MaterialToolbar
+                    app:layout_scrollFlags="scroll"
+                    style="@style/Widget.MaterialComponents.Toolbar.Primary"
+                    app:title="图片音乐视频|备份和下载"
+                    android:id="@+id/toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_alignParentTop="true"
+                    android:layout_height="?attr/actionBarSize" >
+                </com.google.android.material.appbar.MaterialToolbar>
+
+            <LinearLayout
+                android:id="@+id/mid"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:padding="2dp"
+                android:weightSum="1"
+                android:orientation="horizontal">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.5"
+                    android:padding="2dp"
+                    android:layout_alignParentBottom="true"
+                    android:orientation="vertical">
+
+
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/upallbutt"
+                        style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="本地文件全部同步!"/>
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/text2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:textSize="15dp"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:textColor="?attr/colorOnSurface"
+                        tools:textColor="@color/pure_black"
+                        tools:text="" />
+
+                    <com.google.android.material.switchmaterial.SwitchMaterial
+                        android:id="@+id/enableSwitch2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="点击时是否上传"
+
+                        app:switchPadding="8dp"
+                        app:useMaterialThemeColors="true" />
+
+                    <com.google.android.material.switchmaterial.SwitchMaterial
+                        android:id="@+id/enableSwitch4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="点击时是否显示"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:switchPadding="8dp"
+                        app:useMaterialThemeColors="true" />
+
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/message2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:clipToPadding="false"
+                        android:paddingStart="3dp"
+                        android:paddingEnd="8dp"
+                        tools:listitem="@layout/view_chatcard_left" />
+                </LinearLayout>
+
+
+                <View
+                    android:id="@+id/last_price_line"
+                    android:layout_width="2dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:background="#828180"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.5"
+                    android:padding="2dp"
+                    android:layout_alignParentBottom="true"
+                    android:orientation="vertical">
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/downallbutt"
+                        style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="云端文件全部下载!"/>
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/text1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:textSize="15dp"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:textColor="?attr/colorOnSurface"
+                        tools:text=""
+                        tools:textColor="@color/pure_black"/>
+
+                    <com.google.android.material.switchmaterial.SwitchMaterial
+                        android:id="@+id/enableSwitch"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="点击时是否下载"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:switchPadding="8dp"
+                        app:useMaterialThemeColors="true" />
+
+
+                    <com.google.android.material.switchmaterial.SwitchMaterial
+                        android:id="@+id/enableSwitch3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="点击时是否显示"
+
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:switchPadding="8dp"
+                        app:useMaterialThemeColors="true" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/message1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:clipToPadding="false"
+                        android:paddingStart="3dp"
+                        android:paddingEnd="8dp"
+                        tools:listitem="@layout/view_chatcard_left" />
+                </LinearLayout>
+
+            </LinearLayout>
+        </LinearLayout>
+
+
+
+
+
+    <RelativeLayout
+        android:id="@+id/vidd"
+        android:background="#FFFFFF"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:weightSum="1"
+        android:orientation="vertical">
+
+
+
+
+        <WebView
+            android:id="@+id/webpage"
+
+            android:layout_alignParentBottom="true"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            />
+
+        <Button
+            android:id="@+id/closebutt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:background="#50ffffff"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentBottom="true"
+            android:text="关闭"/>
+
+        <Button
+            android:id="@+id/hsbutt"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:background="#50ffffff"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:gravity="center"
+            android:text="横/竖!"/>
+
+
+    </RelativeLayout>
+
+
+
+</RelativeLayout>
+
