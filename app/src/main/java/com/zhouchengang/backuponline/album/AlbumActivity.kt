@@ -1,5 +1,6 @@
 package com.zhouchengang.backuponline.album
 
+import com.zhouchengang.backuponline.base.BaseActivity
 import com.zhouchengang.fileonlinelaunchapp.R
 
 /**

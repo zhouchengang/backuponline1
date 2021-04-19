@@ -2,7 +2,7 @@ package com.zhouchengang.backuponline.album
 
 import android.os.Bundle
 import androidx.fragment.app.FragmentPagerAdapter
-import com.zhouchengang.backuponline.album.HomePagerAdapter
+import com.zhouchengang.backuponline.base.BaseActivity
 import com.zhouchengang.fileonlinelaunchapp.R
 import kotlinx.android.synthetic.main.activity_home.*
 

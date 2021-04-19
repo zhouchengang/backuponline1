@@ -1,10 +1,11 @@
-package com.zhouchengang.backuponline.album
+package com.zhouchengang.backuponline.base
 
 import android.content.Context
 import android.graphics.Color
 import android.os.Bundle
 import android.view.View
 import android.view.WindowManager
+import androidx.annotation.LayoutRes
 import androidx.appcompat.app.AppCompatActivity
 import com.gyf.immersionbar.ImmersionBar
 import com.r0adkll.slidr.Slidr
@@ -20,45 +21,48 @@ import java.lang.reflect.Field
  *  @date   2021/2/8
  *  @desc
  */
-open class BaseActivity(Res: Int) : AppCompatActivity() {
-    var Res: Int = 0
-
-    init {
-        this.Res = Res
-    }
-
+open class BaseActivity(
+    @LayoutRes contentLayoutId: Int,
+    private val useBlackStatusBarTextColor: Boolean = true,
+    private val useSlideBack: Boolean = true,
+    private val useTransparentStatusBar: Boolean = true,
+    private val useCommonShowAnim: Boolean = true,
+    private val useCommonHideAnim: Boolean = true
+) : AppCompatActivity(contentLayoutId) {
     lateinit var slidrInterface: SlidrInterface
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        var view = View.inflate(this, Res, null)
 
-        view.setPadding(
-            view.paddingLeft,
-            view.paddingTop + getStatusBarHeight(this),
-            view.paddingTop,
-            view.paddingBottom
-        )
-
-        setContentView(view)
         //黑色状态栏字体
-        getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
+        if (useBlackStatusBarTextColor) {
+            window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
+        }
 
-        var config: SlidrConfig = SlidrConfig.Builder()
-            .position(SlidrPosition.LEFT)
-            .sensitivity(1f)
-            .scrimColor(Color.BLACK)
-            .scrimStartAlpha(0.6f)
-            .scrimEndAlpha(0f)
-            .build()
-        slidrInterface = Slidr.attach(this, config)
-        //showStatusBar()
 
-        ImmersionBar.with(this)
-            .transparentStatusBar()  //透明状态栏，不写默认透明色
-            .statusBarDarkFont(true)   //状态栏字体是深色，不写默认为亮色
-            .init();
+        //配置滑动返回
+        if (useSlideBack) {
+            var config: SlidrConfig = SlidrConfig.Builder()
+                .position(SlidrPosition.LEFT)
+                .sensitivity(1f)
+                .scrimColor(Color.BLACK)
+                .scrimStartAlpha(0.6f)
+                .scrimEndAlpha(0f)
+                .build()
+            slidrInterface = Slidr.attach(this, config)
+        }
 
-        overridePendingTransition(R.anim.transition_bottom_up, R.anim.transition_bottom_silent)
+        //配置透明状态栏
+        if (useTransparentStatusBar) {
+            ImmersionBar.with(this)
+                .transparentStatusBar()  //透明状态栏，不写默认透明色
+                .statusBarDarkFont(true)   //状态栏字体是深色，不写默认为亮色
+                .init()
+        }
+
+        //使用通用进入动画
+        if (useCommonShowAnim) {
+            overridePendingTransition(R.anim.transition_bottom_up, R.anim.transition_bottom_silent)
+        }
     }
 
     //是否使用滑动返回
@@ -105,7 +109,14 @@ open class BaseActivity(Res: Int) : AppCompatActivity() {
 
     override fun finish() {
         super.finish()
-        overridePendingTransition(R.anim.transition_bottom_silent, R.anim.transition_bottom_down)
+
+        //使用通用离开动画
+        if (useCommonHideAnim) {
+            overridePendingTransition(
+                R.anim.transition_bottom_silent,
+                R.anim.transition_bottom_down
+            )
+        }
     }
 
 }
