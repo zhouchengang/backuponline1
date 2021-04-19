@@ -1,4 +1,4 @@
-package com.zhouchengang.backuponline;
+package com.zhouchengang.backuponline.album;
 
 
 import android.Manifest;
@@ -11,6 +11,8 @@ import android.util.Log;
 
 import androidx.core.app.ActivityCompat;
 
+import com.zhouchengang.backuponline.album.FoneActivity;
+
 import java.io.BufferedWriter;
 import java.io.DataOutputStream;
 import java.io.File;
@@ -21,7 +23,6 @@ import java.io.InputStream;
 import java.io.OutputStreamWriter;
 import java.math.BigInteger;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.security.MessageDigest;
 import java.util.Calendar;

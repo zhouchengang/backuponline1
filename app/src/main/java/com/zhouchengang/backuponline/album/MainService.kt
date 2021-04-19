@@ -1,4 +1,4 @@
-package com.zhouchengang.backuponline
+package com.zhouchengang.backuponline.album
 
 
 import android.app.*
@@ -130,7 +130,7 @@ class MainService : Service() {
     /* 初始化websocket连接*/
     private fun initSocketClient() {
 
-        val uri = URI.create("ws://" +FoneActivity.read.getString("ip", "") + ":7877")
+        val uri = URI.create("ws://" + FoneActivity.read.getString("ip", "") + ":7877")
         client = object : JWebSocketClient(uri) {
             override fun onMessage(message: String) {
                 //Log.e("JWEB", "收到的消息：" + message);

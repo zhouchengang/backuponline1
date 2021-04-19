@@ -1,9 +1,8 @@
-package com.zhouchengang.backuponline
+package com.zhouchengang.backuponline.album
 
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentPagerAdapter
-import com.google.android.material.tabs.TabLayout
+import com.zhouchengang.backuponline.album.HomePagerAdapter
 import com.zhouchengang.fileonlinelaunchapp.R
 import kotlinx.android.synthetic.main.activity_home.*
 

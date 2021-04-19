@@ -1,4 +1,4 @@
-package com.zhouchengang.backuponline
+package com.zhouchengang.backuponline.album
 
 
 import android.content.Intent
@@ -12,7 +12,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 
-import com.zhouchengang.backuponline.UploadUtil.uploadFile
+import com.zhouchengang.backuponline.album.UploadUtil.uploadFile
 import com.zhouchengang.fileonlinelaunchapp.R
 import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.view_chatcard_left.view.*

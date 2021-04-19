@@ -1,4 +1,4 @@
-package com.zhouchengang.backuponline
+package com.zhouchengang.backuponline.album
 
 import com.zhouchengang.fileonlinelaunchapp.R
 

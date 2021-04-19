@@ -1,4 +1,4 @@
-package com.zhouchengang.backuponline
+package com.zhouchengang.backuponline.album
 
 import android.content.Context
 import android.graphics.Color

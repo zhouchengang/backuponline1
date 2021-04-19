@@ -1,4 +1,4 @@
-package com.zhouchengang.backuponline
+package com.zhouchengang.backuponline.album
 
 
 import android.content.Intent
@@ -11,7 +11,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.zhouchengang.backuponline.UploadUtil.downloadFile
+import com.zhouchengang.backuponline.album.UploadUtil.downloadFile
 import com.zhouchengang.fileonlinelaunchapp.R
 import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.view_chatcard_left.view.*
@@ -154,7 +154,10 @@ class SelectionChatCardAdapter(val itemMapin: HashMap<String,Int> )
                             val mIntent = Intent("ACTION_WEBRENEW")
                             mIntent.putExtra(
                                 "yaner",
-                                "http://"+FoneActivity.read.getString("ip", "")+":8888/static/videos/" + item.path2 + item.filename
+                                "http://" + FoneActivity.read.getString(
+                                    "ip",
+                                    ""
+                                ) + ":8888/static/videos/" + item.path2 + item.filename
                             )
                             FoneActivity.sContext.sendBroadcast(mIntent)
                         }

@@ -6,27 +6,29 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:screenOrientation="landscape"
-    tools:context="com.zhouchengang.backuponline.FoneActivity">
+    tools:context="com.zhouchengang.backuponline.album.FoneActivity">
 
 
-        <LinearLayout
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:orientation="vertical">
-            <com.google.android.material.appbar.AppBarLayout
+            android:layout_height="wrap_content"
+            android:id="@+id/topbar"
+            android:color="@color/pure_white"
+            android:theme="@style/ThemeOverlay.MaterialGallery.AppBarLayout"
+            android:layout_alignParentTop="true">
+
+            <com.google.android.material.appbar.MaterialToolbar
+                app:layout_scrollFlags="scroll"
+                app:title="[图片 音乐 视频]  备份和下载"
+                android:id="@+id/toolbar"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/topbar"
-                android:color="@color/pure_white"
-                android:theme="@style/ThemeOverlay.MaterialGallery.AppBarLayout"
-                android:layout_alignParentTop="true">
-                <com.google.android.material.appbar.MaterialToolbar
-                    app:layout_scrollFlags="scroll"
-                    app:title="[图片 音乐 视频]  备份和下载"
-                    android:id="@+id/toolbar"
-                    android:layout_width="match_parent"
-                    android:layout_height="?attr/actionBarSize" />
+                android:layout_height="?attr/actionBarSize" />
             </com.google.android.material.appbar.AppBarLayout>
             <LinearLayout
                 android:id="@+id/mid"

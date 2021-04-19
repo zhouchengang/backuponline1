@@ -10,6 +10,8 @@ import android.os.Handler
 import android.os.Message
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import com.zhouchengang.backuponline.album.FoneActivity
+import com.zhouchengang.backuponline.album.UploadUtil
 import com.zhouchengang.fileonlinelaunchapp.R
 import kotlinx.android.synthetic.main.activity_fone2.*
 import kotlinx.coroutines.GlobalScope

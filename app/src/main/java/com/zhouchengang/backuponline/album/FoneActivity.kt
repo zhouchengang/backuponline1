@@ -1,11 +1,10 @@
-package com.zhouchengang.backuponline
+package com.zhouchengang.backuponline.album
 
 
 import android.content.*
 import android.content.pm.ActivityInfo
 import android.content.res.Configuration
 import android.os.Bundle
-import android.text.TextUtils
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
@@ -15,8 +14,9 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.zhouchengang.backuponline.UploadUtil.downloadFile
-import com.zhouchengang.backuponline.UploadUtil.uploadFile
+import com.zhouchengang.backuponline.*
+import com.zhouchengang.backuponline.album.UploadUtil.downloadFile
+import com.zhouchengang.backuponline.album.UploadUtil.uploadFile
 import com.zhouchengang.fileonlinelaunchapp.R
 import kotlinx.android.synthetic.main.activity_fone.*
 import kotlinx.coroutines.GlobalScope

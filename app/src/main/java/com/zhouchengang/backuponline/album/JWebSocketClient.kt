@@ -1,4 +1,4 @@
-package com.zhouchengang.backuponline
+package com.zhouchengang.backuponline.album
 
 import org.java_websocket.client.WebSocketClient
 import org.java_websocket.drafts.Draft_6455

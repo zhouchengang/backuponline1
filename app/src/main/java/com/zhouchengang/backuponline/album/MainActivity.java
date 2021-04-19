@@ -1,4 +1,4 @@
-package com.zhouchengang.backuponline;
+package com.zhouchengang.backuponline.album;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -17,6 +17,7 @@ import com.alibaba.sdk.android.oss.common.auth.OSSCredentialProvider;
 import com.alibaba.sdk.android.oss.internal.OSSAsyncTask;
 import com.alibaba.sdk.android.oss.model.ListObjectsRequest;
 import com.alibaba.sdk.android.oss.model.ListObjectsResult;
+import com.zhouchengang.backuponline.album.OSSConfig;
 
 /**
  * @author zhouchengang
