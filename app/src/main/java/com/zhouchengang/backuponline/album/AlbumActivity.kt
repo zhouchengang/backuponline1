@@ -2,6 +2,7 @@ package com.zhouchengang.backuponline.album
 
 import android.content.Context
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
 import com.bumptech.glide.Glide
 import com.zhouchengang.backuponline.base.BaseActivity
@@ -13,7 +14,7 @@ import kotlinx.android.synthetic.main.activity_album.*
  * @date 2021/3/8
  * @time 11:15.
  */
-class AlbumActivity : BaseActivity(R.layout.activity_album, useSlideBack = false) {
+class AlbumActivity : BaseActivity(R.layout.activity_album) {
     companion object {
         const val PIC_PATH = "PIC_PATH"
         fun launch(context: Context, picPath: String?) {
@@ -40,6 +41,6 @@ class AlbumActivity : BaseActivity(R.layout.activity_album, useSlideBack = false
                 .load(it)
                 .into(iv_content)
         }
-    }
 
+    }
 }

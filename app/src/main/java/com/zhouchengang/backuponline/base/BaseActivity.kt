@@ -1,9 +1,11 @@
 package com.zhouchengang.backuponline.base
 
+import android.app.Activity
 import android.content.Context
 import android.graphics.Color
 import android.os.Bundle
 import android.view.View
+import android.view.ViewGroup
 import android.view.WindowManager
 import androidx.annotation.LayoutRes
 import androidx.appcompat.app.AppCompatActivity
@@ -25,9 +27,7 @@ open class BaseActivity(
     @LayoutRes contentLayoutId: Int,
     private val useBlackStatusBarTextColor: Boolean = true,
     private val useSlideBack: Boolean = true,
-    private val useTransparentStatusBar: Boolean = true,
-    private val useCommonShowAnim: Boolean = true,
-    private val useCommonHideAnim: Boolean = true
+    private val useTransparentStatusBar: Boolean = true
 ) : AppCompatActivity(contentLayoutId) {
     lateinit var slidrInterface: SlidrInterface
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -58,14 +58,15 @@ open class BaseActivity(
                 .statusBarDarkFont(true)   //状态栏字体是深色，不写默认为亮色
                 .fitsSystemWindows(false)
                 .init()
+
+            getRootView(this)?.setBackgroundColor(Color.parseColor("#FFFFFFFF"))
+            getRootView(this)?.fitsSystemWindows = true
         }
 
-        //使用通用进入动画
-        if (useCommonShowAnim) {
-            overridePendingTransition(R.anim.transition_bottom_up, R.anim.transition_bottom_silent)
-        }
+    }
 
-
+    private fun getRootView(context: Activity): View? {
+        return (context.findViewById<View>(android.R.id.content) as ViewGroup).getChildAt(0)
     }
 
     //是否使用滑动返回
@@ -110,17 +111,11 @@ open class BaseActivity(
         return statusBarHeight
     }
 
-    override fun finish() {
-        super.finish()
-
-        //使用通用离开动画
-        if (useCommonHideAnim) {
-            overridePendingTransition(
-                R.anim.transition_bottom_silent,
-                R.anim.transition_bottom_down
-            )
-        }
-    }
+//    override fun finish() {
+//        super.finish()
+//
+//        overridePendingTransition(0, R.anim.bottom_view_out)
+//    }
 
 }
 
