@@ -11,7 +11,7 @@ import kotlinx.android.synthetic.main.activity_home.*
  *  @date   2021/2/8
  *  @desc
  */
-class HomeActivity : BaseActivity(R.layout.activity_home) {
+class HomeActivity : BaseActivity(R.layout.activity_home, useSlideBack = false) {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

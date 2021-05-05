@@ -56,6 +56,7 @@ open class BaseActivity(
             ImmersionBar.with(this)
                 .transparentStatusBar()  //透明状态栏，不写默认透明色
                 .statusBarDarkFont(true)   //状态栏字体是深色，不写默认为亮色
+                .fitsSystemWindows(false)
                 .init()
         }
 
@@ -63,6 +64,8 @@ open class BaseActivity(
         if (useCommonShowAnim) {
             overridePendingTransition(R.anim.transition_bottom_up, R.anim.transition_bottom_silent)
         }
+
+
     }
 
     //是否使用滑动返回

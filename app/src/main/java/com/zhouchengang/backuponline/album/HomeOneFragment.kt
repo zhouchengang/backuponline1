@@ -3,9 +3,13 @@ package com.zhouchengang.backuponline.album
 import android.database.Cursor
 import android.os.Bundle
 import android.provider.MediaStore
+import android.util.Log
 import android.view.View
+import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.blankj.utilcode.util.ConvertUtils
 import com.zhouchengang.fileonlinelaunchapp.R
 import kotlinx.android.synthetic.main.fragment_home_one.*
 
@@ -15,7 +19,7 @@ import kotlinx.android.synthetic.main.fragment_home_one.*
  *  @desc
  */
 open class HomeOneFragment : Fragment(R.layout.fragment_home_one) {
-    companion object{
+    companion object {
         fun newInstance(): HomeOneFragment {
             return HomeOneFragment()
         }
@@ -36,10 +40,35 @@ open class HomeOneFragment : Fragment(R.layout.fragment_home_one) {
         gridcycle.adapter = adapter
         adapter.addData(getLocalPicFile())
 
+
+        gridcycle.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+            var maxBase = 12000
+            var currentHeight = maxBase
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                currentHeight -= dy
+                if (currentHeight > maxBase) {
+                    currentHeight = maxBase
+                }
+                if (currentHeight < maxBase * 0.6) {
+                    currentHeight = (maxBase * 0.6).toInt()
+                }
+
+
+                tv_tip.textSize = 40f * currentHeight / maxBase
+
+                val linearParams = tv_tip.layoutParams
+//                linearParams.height = ViewGroup.LayoutParams.WRAP_CONTENT
+                linearParams.height = ConvertUtils.dp2px(60f * currentHeight / maxBase)
+                tv_tip.layoutParams = linearParams
+            }
+
+            override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
+            }
+        })
     }
 
     fun getLocalPicFile(): List<String> {
-        var picList :ArrayList<String> = ArrayList<String>()
+        var picList: ArrayList<String> = ArrayList<String>()
         var cursor: Cursor? = context?.contentResolver?.query(
             MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
             null,
@@ -59,8 +88,6 @@ open class HomeOneFragment : Fragment(R.layout.fragment_home_one) {
 
         return picList.asReversed()
     }
-
-
 
 
 }
