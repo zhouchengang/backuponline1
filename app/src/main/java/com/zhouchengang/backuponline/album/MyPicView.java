@@ -15,19 +15,19 @@ import com.zhouchengang.fileonlinelaunchapp.R;
  * @date 2021/2/8
  * @desc
  */
-public class MyConstraintLayout extends androidx.appcompat.widget.AppCompatImageView {
+public class MyPicView extends androidx.appcompat.widget.AppCompatImageView {
 
-    public MyConstraintLayout(Context context) {
+    public MyPicView(Context context) {
         super(context);
         initView(context, null);
     }
 
-    public MyConstraintLayout(Context context, AttributeSet attrs) {
+    public MyPicView(Context context, AttributeSet attrs) {
         super(context, attrs);
         initView(context, attrs);
     }
 
-    public MyConstraintLayout(Context context, AttributeSet attrs, int defStyleAttr) {
+    public MyPicView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         initView(context, attrs);
     }

@@ -1,11 +1,10 @@
 package com.zhouchengang.backuponline.album
 
 import android.database.Cursor
+import android.graphics.Rect
 import android.os.Bundle
 import android.provider.MediaStore
-import android.util.Log
 import android.view.View
-import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -57,12 +56,28 @@ open class HomeOneFragment : Fragment(R.layout.fragment_home_one) {
                 tv_tip.textSize = 40f * currentHeight / maxBase
 
                 val linearParams = tv_tip.layoutParams
-//                linearParams.height = ViewGroup.LayoutParams.WRAP_CONTENT
                 linearParams.height = ConvertUtils.dp2px(60f * currentHeight / maxBase)
                 tv_tip.layoutParams = linearParams
             }
 
             override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
+            }
+        })
+
+        gridcycle.addItemDecoration(object : RecyclerView.ItemDecoration() {
+            override fun getItemOffsets(
+                outRect: Rect,
+                view: View,
+                parent: RecyclerView,
+                state: RecyclerView.State
+            ) {
+                outRect.apply {
+                    val column = (view.layoutParams as GridLayoutManager.LayoutParams).spanIndex
+                    left = ConvertUtils.dp2px(if (column == 0) 5f else 5f)
+                    right = ConvertUtils.dp2px(if (column == 2) 5f else 5f)
+                    top = ConvertUtils.dp2px(3f)
+                    bottom = ConvertUtils.dp2px(3f)
+                }
             }
         })
     }
