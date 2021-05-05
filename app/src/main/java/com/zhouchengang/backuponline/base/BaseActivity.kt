@@ -38,18 +38,18 @@ open class BaseActivity(
             window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
         }
 
-
-        //配置滑动返回
-        if (useSlideBack) {
-            var config: SlidrConfig = SlidrConfig.Builder()
-                .position(SlidrPosition.LEFT)
-                .sensitivity(1f)
-                .scrimColor(Color.BLACK)
-                .scrimStartAlpha(0.6f)
-                .scrimEndAlpha(0f)
-                .build()
-            slidrInterface = Slidr.attach(this, config)
-        }
+//
+//        //配置滑动返回
+//        if (useSlideBack) {
+//            var config: SlidrConfig = SlidrConfig.Builder()
+//                .position(SlidrPosition.LEFT)
+//                .sensitivity(1f)
+//                .scrimColor(Color.BLACK)
+//                .scrimStartAlpha(0.6f)
+//                .scrimEndAlpha(0f)
+//                .build()
+//            slidrInterface = Slidr.attach(this, config)
+//        }
 
         //配置透明状态栏
         if (useTransparentStatusBar) {
@@ -113,8 +113,7 @@ open class BaseActivity(
 
 //    override fun finish() {
 //        super.finish()
-//
-//        overridePendingTransition(0, R.anim.bottom_view_out)
+//        overridePendingTransition(R.anim.anim_stay, R.anim.bottom_view_out)
 //    }
 
 }

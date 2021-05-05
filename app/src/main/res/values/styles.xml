@@ -1,9 +1,10 @@
 <resources>
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="android:windowIsTranslucent">true</item>
-        <item name="android:windowBackground">@android:color/transparent</item>
+
         <item name="android:windowAnimationStyle">@style/Animation</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <!--        <item name="android:windowIsTranslucent">true</item>-->
         <item name="android:windowDrawsSystemBarBackgrounds">true</item>
         <item name="colorPrimary">@color/white</item>
         <item name="colorPrimaryDark">@color/white</item>
@@ -13,15 +14,13 @@
         <item name="android:windowTranslucentStatus">true</item>
         <item name="android:windowTranslucentNavigation">true</item>
         <item name="android:windowContentOverlay">@null</item>
+
+
     </style>
 
     <style name="ThemeOverlay.MaterialGallery.AppBarLayout" parent="@style/ThemeOverlay.MaterialComponents.ActionBar.Primary"></style>
 
-    <!--    //设置为true，意味着xml布局延伸到状态栏-->
-    <!--    <item name="android:windowTranslucentStatus" >true</item>-->
-    <!--    <item name="android:windowTranslucentNavigation" >false</item>-->
-
-    <style name="Animation">
+    <style name="Animation" parent="android:style/Animation.Translucent">
         <item name="android:activityOpenEnterAnimation">@anim/activity_right_in</item>
         <item name="android:activityOpenExitAnimation">@anim/activity_left_out</item>
         <item name="android:activityCloseEnterAnimation">@anim/activity_left_in</item>
