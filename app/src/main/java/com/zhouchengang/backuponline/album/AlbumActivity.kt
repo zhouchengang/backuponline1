@@ -41,6 +41,9 @@ class AlbumActivity : BaseActivity(R.layout.activity_album) {
                 .load(it)
                 .into(iv_content)
         }
+        view_root.onSwipeOff = {
+            finish()
+        }
 
     }
 }
