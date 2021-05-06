@@ -26,6 +26,16 @@ public class AlbumStu {
         addPic(path);
     }
 
+
+    public DirStu getDir(String path) {
+        for (DirStu item : dirList) {
+            if (item.dirName.equals(UtilKotlin.Companion.getDirByPath(path))) {
+                return item;
+            }
+        }
+        return new DirStu(UtilKotlin.Companion.getDirByPath(path));
+    }
+
     public class DirStu {
         public String dirName;
         public ArrayList<PicStu> picList;

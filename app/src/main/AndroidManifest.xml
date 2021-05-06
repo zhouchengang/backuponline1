@@ -71,13 +71,17 @@
             android:name="com.zhouchengang.backuponline.album.AlbumActivity"
             android:label="@string/album" />
 
+        <activity
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:name="com.zhouchengang.backuponline.album.PicActivity"
+            android:label="@string/album" />
+
 
         <service
             android:priority="888"
             android:name="com.zhouchengang.backuponline.album.MainService"
             android:enabled="true"
             android:exported="true" />
-
 
 
     </application>

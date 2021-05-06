@@ -11,13 +11,13 @@ import com.zhouchengang.fileonlinelaunchapp.R
  *  @date   2021/2/8
  *  @desc
  */
-class PicGridAdapter :
-    BaseQuickAdapter<AlbumStu.PicStu, BaseViewHolder>(R.layout.item_pic_in_album, null) {
+class DirGridAdapter :
+    BaseQuickAdapter<AlbumStu.DirStu, BaseViewHolder>(R.layout.item_home_page_one, null) {
 
-    override fun convert(holder: BaseViewHolder, item: AlbumStu.PicStu) {
-        holder.setText(R.id.tv_album_name, "" + item.name)
+    override fun convert(holder: BaseViewHolder, item: AlbumStu.DirStu) {
+        holder.setText(R.id.tv_album_name, "" + item.dirName)
         Glide.with(context)
-            .load(item.path)
+            .load(item.cover)
             .apply(
                 RequestOptions()
                     .transform(GlideRoundTransformCenterCrop(20f))
@@ -26,7 +26,7 @@ class PicGridAdapter :
             .into(holder.getView(R.id.iv_album_cover))
 
         holder.itemView.setOnClickListener { view ->
-            PicActivity.launch(context, item.path)
+            AlbumActivity.launch(context, item.dirName)
         }
     }
 }

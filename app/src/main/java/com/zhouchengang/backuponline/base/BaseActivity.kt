@@ -49,14 +49,15 @@ open class BaseActivity(
 //            slidrInterface = Slidr.attach(this, config)
 //        }
 
-
-        for (item in (findViewById<View>(android.R.id.content) as ViewGroup)) {
-            if (item is SlideBackConstraintLayout) {
-                item.onSwipeOff = {
-                    finish()
-                }
+        if (useSlideBack) {
+            for (item in (findViewById<View>(android.R.id.content) as ViewGroup)) {
+                if (item is SlideBackConstraintLayout) {
+                    item.onSwipeOff = {
+                        finish()
+                    }
 //                item.show()
-                break
+                    break
+                }
             }
         }
 

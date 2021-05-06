@@ -9,9 +9,6 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.blankj.utilcode.util.ConvertUtils
-import com.zhouchengang.backuponline.album.UtilKotlin
-import com.zhouchengang.backuponline.album.UtilKotlin.Companion.getDirByPath
-import com.zhouchengang.backuponline.album.UtilKotlin.Companion.getNameByPath
 import com.zhouchengang.fileonlinelaunchapp.R
 import kotlinx.android.synthetic.main.fragment_home_one.*
 
@@ -38,7 +35,7 @@ open class HomeOneFragment : Fragment(R.layout.fragment_home_one) {
         var manager = GridLayoutManager(context, 3)
 
         gridcycle.layoutManager = manager
-        var adapter = PicGridAdapter()
+        var adapter = DirGridAdapter()
         gridcycle.adapter = adapter
         adapter.setList(getLocalPicFile())
 
