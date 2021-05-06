@@ -38,6 +38,4 @@ public class Utils {
         return aliPath+"?x-oss-process=image/resize,m_fill,h_100,w_100";
     }
 
-
-
 }

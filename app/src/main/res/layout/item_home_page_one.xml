@@ -15,8 +15,8 @@
     <TextView
         android:id="@+id/tv_album_name"
         android:layout_width="match_parent"
-        android:layout_height="20dp"
-        android:singleLine="true"
+        android:layout_height="50dp"
+        android:maxLines="2"
         android:ellipsize="start"
         android:textSize="8sp"
         android:gravity="start|center_vertical"

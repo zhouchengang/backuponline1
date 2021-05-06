@@ -9,6 +9,9 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.blankj.utilcode.util.ConvertUtils
+import com.zhouchengang.backuponline.album.UtilKotlin
+import com.zhouchengang.backuponline.album.UtilKotlin.Companion.getDirByPath
+import com.zhouchengang.backuponline.album.UtilKotlin.Companion.getNameByPath
 import com.zhouchengang.fileonlinelaunchapp.R
 import kotlinx.android.synthetic.main.fragment_home_one.*
 
@@ -37,7 +40,7 @@ open class HomeOneFragment : Fragment(R.layout.fragment_home_one) {
         gridcycle.layoutManager = manager
         var adapter = PicGridAdapter()
         gridcycle.adapter = adapter
-        adapter.addData(getLocalPicFile())
+        adapter.setList(getLocalPicFile())
 
 
         gridcycle.addOnScrollListener(object : RecyclerView.OnScrollListener() {
@@ -82,8 +85,9 @@ open class HomeOneFragment : Fragment(R.layout.fragment_home_one) {
         })
     }
 
-    fun getLocalPicFile(): List<String> {
-        var picList: ArrayList<String> = ArrayList<String>()
+    fun getLocalPicFile(): Collection<AlbumStu.DirStu> {
+        var albumInfo = AlbumStu()
+
         var cursor: Cursor? = context?.contentResolver?.query(
             MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
             null,
@@ -95,13 +99,13 @@ open class HomeOneFragment : Fragment(R.layout.fragment_home_one) {
             while (cursor.moveToNext()) {
                 val data: ByteArray =
                     cursor.getBlob(cursor.getColumnIndex(MediaStore.Images.Media.DATA))
-                var pathh = String(data, 0, data.size - 1);
-                picList.add(pathh)
+                var pathh = String(data, 0, data.size - 1)
+                albumInfo.addPic(pathh)
             }
             cursor.close()
         }
 
-        return picList.asReversed()
+        return albumInfo.dirList
     }
 
 
