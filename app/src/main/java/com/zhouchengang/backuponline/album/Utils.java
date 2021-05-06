@@ -11,7 +11,8 @@ public class Utils {
 
     public static final String BASE_URL = "http://192.168.8.247:4545/";
     public static final String IMG_URL = "http://47.240.168.158:8888/";
-    public static final String UP_URL = "http://47.240.168.158:1223/";
+//    public static final String UP_URL = "http://127.0.0.1:3000/";
+    public static final String UP_URL = "http://192.168.0.113:3000/";
 
     public  static  boolean isDir(String s){
         if(null == s || s.isEmpty()){
