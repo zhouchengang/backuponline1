@@ -13,7 +13,7 @@ import androidx.constraintlayout.widget.ConstraintLayout
 
 class SlideBackConstraintLayout : ConstraintLayout {
 
-    public var onSwipeOff: () -> Unit = {
+    var onSwipeOff: () -> Unit = {
     }
 
     constructor(context: Context?) : this(context, null)

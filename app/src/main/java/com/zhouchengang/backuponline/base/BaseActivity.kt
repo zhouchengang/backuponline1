@@ -11,7 +11,6 @@ import androidx.annotation.LayoutRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.iterator
 import com.gyf.immersionbar.ImmersionBar
-import com.r0adkll.slidr.model.SlidrInterface
 import com.zhouchengang.backuponline.album.SlideBackConstraintLayout
 import com.zhouchengang.fileonlinelaunchapp.R
 import java.lang.reflect.Field
@@ -28,7 +27,6 @@ open class BaseActivity(
     private val useSlideBack: Boolean = true,
     private val useTransparentStatusBar: Boolean = true
 ) : AppCompatActivity(contentLayoutId) {
-    lateinit var slidrInterface: SlidrInterface
     override fun onCreate(savedInstanceState: Bundle?) {
         overridePendingTransition(R.anim.activity_right_in, R.anim.anim_stay)
         super.onCreate(savedInstanceState)
@@ -81,14 +79,6 @@ open class BaseActivity(
         return (context.findViewById<View>(android.R.id.content) as ViewGroup).getChildAt(0)
     }
 
-    //是否使用滑动返回
-    fun enableSwipeBack(enableSwipeBack: Boolean) {
-        if (enableSwipeBack) {
-            slidrInterface.unlock()
-        } else {
-            slidrInterface.lock()
-        }
-    }
 
     //全屏并且隐藏状态栏
     fun hideStatusBar() {

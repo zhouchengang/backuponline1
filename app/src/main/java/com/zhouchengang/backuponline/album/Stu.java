@@ -1,6 +1,5 @@
 package com.zhouchengang.backuponline.album;
 
-import com.zhouchengang.backuponline.album.ImageStu;
 
 import java.util.ArrayList;
 
