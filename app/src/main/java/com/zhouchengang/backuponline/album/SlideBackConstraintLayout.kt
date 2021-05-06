@@ -1,10 +1,14 @@
 package com.zhouchengang.backuponline.album
 
+import android.animation.Animator
+import android.animation.AnimatorListenerAdapter
+import android.animation.ObjectAnimator
 import android.annotation.SuppressLint
 import android.content.Context
 import android.util.AttributeSet
 import android.util.Log
 import android.view.MotionEvent
+import android.view.animation.AccelerateDecelerateInterpolator
 import androidx.constraintlayout.widget.ConstraintLayout
 
 class SlideBackConstraintLayout : ConstraintLayout {
@@ -26,7 +30,7 @@ class SlideBackConstraintLayout : ConstraintLayout {
         rootView.setOnTouchListener { v, event ->
             when (event.action) {
                 MotionEvent.ACTION_UP -> {
-                    if (translationX > width * 0.1f) {
+                    if (translationX > width * 0.4f) {
                         dismiss()
                     } else {
                         recovery()
@@ -54,22 +58,41 @@ class SlideBackConstraintLayout : ConstraintLayout {
 
 
     private fun moveMethod2(dx: Float, dy: Float) {
-        translationX = (translationX + dx)
+        translationX = if ((translationX + dx) > 0f) (translationX + dx) else 0f
         Log.e("TAG", "translationX=$translationX")
     }
 
 
     private fun recovery() {
-        translationX = 0f
-        translationY = 0f
+        ObjectAnimator.ofFloat(this, "translationX", translationX, 0f).apply {
+            duration = (200 * translationX / width).toLong()
+            repeatCount = 0
+            interpolator = AccelerateDecelerateInterpolator()
+            addListener(object : AnimatorListenerAdapter() {
+                override fun onAnimationEnd(animation: Animator) {
+                    super.onAnimationEnd(animation)
+                    translationX = 0f
+                }
+            })
+            start()
+        }
+
     }
 
 
-    private fun dismiss() {
-        translationX = width.toFloat()
-        translationY = 0f
-        onSwipeOff.invoke()
+    fun dismiss() {
+        ObjectAnimator.ofFloat(this, "translationX", translationX, width.toFloat()).apply {
+            duration = (200 * (width - translationX) / width).toLong()
+            repeatCount = 0
+            interpolator = AccelerateDecelerateInterpolator()
+            addListener(object : AnimatorListenerAdapter() {
+                override fun onAnimationEnd(animation: Animator) {
+                    super.onAnimationEnd(animation)
+                    onSwipeOff.invoke()
+                }
+            })
+            start()
+        }
     }
-
 
 }

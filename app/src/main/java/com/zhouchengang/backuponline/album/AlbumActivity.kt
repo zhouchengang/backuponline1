@@ -2,7 +2,6 @@ package com.zhouchengang.backuponline.album
 
 import android.content.Context
 import android.content.Intent
-import android.graphics.Color
 import android.os.Bundle
 import com.bumptech.glide.Glide
 import com.zhouchengang.backuponline.base.BaseActivity
@@ -41,9 +40,5 @@ class AlbumActivity : BaseActivity(R.layout.activity_album) {
                 .load(it)
                 .into(iv_content)
         }
-        view_root.onSwipeOff = {
-            finish()
-        }
-
     }
 }

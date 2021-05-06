@@ -9,11 +9,10 @@ import android.view.ViewGroup
 import android.view.WindowManager
 import androidx.annotation.LayoutRes
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.iterator
 import com.gyf.immersionbar.ImmersionBar
-import com.r0adkll.slidr.Slidr
-import com.r0adkll.slidr.model.SlidrConfig
 import com.r0adkll.slidr.model.SlidrInterface
-import com.r0adkll.slidr.model.SlidrPosition
+import com.zhouchengang.backuponline.album.SlideBackConstraintLayout
 import com.zhouchengang.fileonlinelaunchapp.R
 import java.lang.reflect.Field
 
@@ -31,6 +30,7 @@ open class BaseActivity(
 ) : AppCompatActivity(contentLayoutId) {
     lateinit var slidrInterface: SlidrInterface
     override fun onCreate(savedInstanceState: Bundle?) {
+        overridePendingTransition(R.anim.activity_right_in, R.anim.anim_stay)
         super.onCreate(savedInstanceState)
 
         //黑色状态栏字体
@@ -50,6 +50,18 @@ open class BaseActivity(
 //                .build()
 //            slidrInterface = Slidr.attach(this, config)
 //        }
+
+
+        for (item in (findViewById<View>(android.R.id.content) as ViewGroup)) {
+            if (item is SlideBackConstraintLayout) {
+                item.onSwipeOff = {
+                    finish()
+                }
+//                item.show()
+                break
+            }
+        }
+
 
         //配置透明状态栏
         if (useTransparentStatusBar) {
@@ -115,6 +127,15 @@ open class BaseActivity(
 //        super.finish()
 //        overridePendingTransition(R.anim.anim_stay, R.anim.bottom_view_out)
 //    }
+
+    override fun onBackPressed() {
+        for (item in (findViewById<View>(android.R.id.content) as ViewGroup)) {
+            if (item is SlideBackConstraintLayout) {
+                item.dismiss()
+                return
+            }
+        }
+    }
 
 }
 
