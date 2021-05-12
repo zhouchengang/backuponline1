@@ -35,14 +35,14 @@ class HomeTwoFragment : Fragment(R.layout.fragment_home_two) {
     }
 
 
-    lateinit var adapter: PicGridAdapter
+    lateinit var adapter: DirGridAdapter
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         var manager = GridLayoutManager(context, 3)
 
         gridcycle.layoutManager = manager
-        adapter = PicGridAdapter()
+        adapter = DirGridAdapter()
         gridcycle.adapter = adapter
         //adapter.addData(getLocalPicFile())
 
@@ -81,15 +81,20 @@ class HomeTwoFragment : Fragment(R.layout.fragment_home_two) {
                 ) {
                     Log.e("http response", response.toString())
                     Log.e("http response", Gson().toJson(response))
+
+                    var albumInfo = AlbumStu()
+
                     if (response.isSuccessful) {
                         response.body()?.data?.picList?.let {
                             for (item in it) {
                                 item?.path?.let { path ->
-                                    adapter.addData(PicStu(getPicUrl(path), getCoverUrl(path)))
+//                                    adapter.addData(PicStu(getPicUrl(path), getCoverUrl(path)))
+                                    albumInfo.addPic(getPicUrl(path))
                                 }
                             }
                         }
                     }
+                    adapter.setList(albumInfo.dirList)
                 }
 
                 override fun onFailure(call: Call<BaseBean<GetStringBo>>, t: Throwable) {

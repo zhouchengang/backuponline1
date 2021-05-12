@@ -14,6 +14,7 @@ import com.zhouchengang.backuponline.base.BaseActivity
 import com.zhouchengang.fileonlinelaunchapp.R
 import kotlinx.android.synthetic.main.activity_album.gridcycle
 import kotlinx.android.synthetic.main.activity_album.tv_tip
+import java.util.ArrayList
 
 /**
  * @auther zhouchengang
@@ -23,19 +24,23 @@ import kotlinx.android.synthetic.main.activity_album.tv_tip
 class AlbumActivity : BaseActivity(R.layout.activity_album) {
     companion object {
         const val DIR = "DIR"
-        fun launch(context: Context, picPath: String?) {
-            picPath?.let {
+        const val DIRSTU = "DirStu"
+        fun launch(context: Context, picPath: String?,dirStu: ArrayList<PicStu>?) {
+            dirStu?.let {
                 val intent = Intent(context, AlbumActivity::class.java)
-                intent.putExtra(DIR, it)
+                intent.putExtra(DIR, picPath)
+                intent.putParcelableArrayListExtra(DIRSTU, it)
                 context.startActivity(intent)
             }
         }
     }
 
     var dir: String? = null
+    var dirStu: ArrayList<PicStu>? = null
     private fun parseIntent() {
         intent?.apply {
             dir = getStringExtra(DIR)
+            dirStu = getParcelableArrayListExtra<PicStu>(DIRSTU)
         }
     }
 
@@ -51,7 +56,8 @@ class AlbumActivity : BaseActivity(R.layout.activity_album) {
             gridcycle.layoutManager = manager
             var adapter = PicGridAdapter()
             gridcycle.adapter = adapter
-            adapter.setList(getLocalPicFile(it))
+//            adapter.setList(getLocalPicFile(it))
+            adapter.setList(dirStu)
 
 
             gridcycle.addOnScrollListener(object : RecyclerView.OnScrollListener() {

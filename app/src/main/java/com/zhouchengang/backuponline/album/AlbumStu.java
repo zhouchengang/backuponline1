@@ -1,6 +1,7 @@
 package com.zhouchengang.backuponline.album;
 
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
@@ -36,7 +37,7 @@ public class AlbumStu {
         return new DirStu(UtilKotlin.getDirByPath(path));
     }
 
-    public class DirStu {
+    public class DirStu implements Serializable {
         public String dirName;
         public ArrayList<PicStu> picList;
 
