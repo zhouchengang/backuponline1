@@ -100,7 +100,7 @@ class AlbumActivity : BaseActivity(R.layout.activity_album) {
     }
 
 
-    fun getLocalPicFile(dir: String): Collection<AlbumStu.PicStu> {
+    fun getLocalPicFile(dir: String): Collection<PicStu> {
         var albumInfo = AlbumStu()
 
         var cursor: Cursor? = contentResolver?.query(

@@ -60,18 +60,6 @@ public class AlbumStu {
         }
     }
 
-    public class PicStu {
-        public String path;
-        public String name;
-        public String dir;
-
-        PicStu(String path) {
-            this.path = path;
-            this.name = UtilKotlin.getNameByPath(path);
-            this.dir = UtilKotlin.getDirByPath(path);
-        }
-    }
-
 }
 
 

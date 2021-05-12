@@ -12,12 +12,12 @@ import com.zhouchengang.fileonlinelaunchapp.R
  *  @desc
  */
 class PicGridAdapter :
-    BaseQuickAdapter<AlbumStu.PicStu, BaseViewHolder>(R.layout.item_pic_in_album, null) {
+    BaseQuickAdapter<PicStu, BaseViewHolder>(R.layout.item_pic_in_album, null) {
 
-    override fun convert(holder: BaseViewHolder, item: AlbumStu.PicStu) {
+    override fun convert(holder: BaseViewHolder, item: PicStu) {
         holder.setText(R.id.tv_album_name, "" + item.name)
         Glide.with(context)
-            .load(item.path)
+            .load(item.cover)
             .apply(
                 RequestOptions()
                     .transform(GlideRoundTransformCenterCrop(20f))
