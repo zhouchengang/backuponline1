@@ -29,7 +29,7 @@ class AlbumActivity : BaseActivity(R.layout.activity_album) {
             dirStu?.let {
                 val intent = Intent(context, AlbumActivity::class.java)
                 intent.putExtra(DIR, picPath)
-                intent.putParcelableArrayListExtra(DIRSTU, it)
+                intent.putExtra(DIRSTU, it)
                 context.startActivity(intent)
             }
         }
@@ -40,7 +40,7 @@ class AlbumActivity : BaseActivity(R.layout.activity_album) {
     private fun parseIntent() {
         intent?.apply {
             dir = getStringExtra(DIR)
-            dirStu = getParcelableArrayListExtra<PicStu>(DIRSTU)
+            dirStu = getSerializableExtra(DIRSTU) as  ArrayList<PicStu>
         }
     }
 
@@ -56,7 +56,6 @@ class AlbumActivity : BaseActivity(R.layout.activity_album) {
             gridcycle.layoutManager = manager
             var adapter = PicGridAdapter()
             gridcycle.adapter = adapter
-//            adapter.setList(getLocalPicFile(it))
             adapter.setList(dirStu)
 
 
@@ -103,30 +102,6 @@ class AlbumActivity : BaseActivity(R.layout.activity_album) {
 
 
         }
-    }
-
-
-    fun getLocalPicFile(dir: String): Collection<PicStu> {
-        var albumInfo = AlbumStu()
-
-        var cursor: Cursor? = contentResolver?.query(
-            MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
-            null,
-            null,
-            null,
-            null
-        )
-        cursor?.let {
-            while (cursor.moveToNext()) {
-                val data: ByteArray =
-                    cursor.getBlob(cursor.getColumnIndex(MediaStore.Images.Media.DATA))
-                var pathh = String(data, 0, data.size - 1)
-                albumInfo.addPic(pathh)
-            }
-            cursor.close()
-        }
-
-        return albumInfo.getDir(dir).picList
     }
 
 }

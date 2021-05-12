@@ -17,14 +17,18 @@ public class AlbumStu {
     }
 
     public void addPic(String path) {
+        addPic(path,path);
+    }
+
+    public void addPic(String path,String cover) {
         for (DirStu item : dirList) {
             if (item.dirName.equals(UtilKotlin.getDirByPath(path))) {
-                item.addPic(path);
+                item.addPic(path,cover);
                 return;
             }
         }
         dirList.add(new DirStu(UtilKotlin.getDirByPath(path)));
-        addPic(path);
+        addPic(path,cover);
     }
 
 
@@ -46,9 +50,9 @@ public class AlbumStu {
             picList = new ArrayList<PicStu>();
         }
 
-        public void addPic(String path) {
+        public void addPic(String path,String cover) {
             if (UtilKotlin.getDirByPath(path).equals(dirName)) {
-                picList.add(new PicStu(path));
+                picList.add(new PicStu(path,cover));
             }
         }
 
@@ -56,7 +60,7 @@ public class AlbumStu {
             if (picList == null || picList.isEmpty()) {
                 return "";
             } else {
-                return picList.get(0).path;
+                return picList.get(0).cover;
             }
         }
     }

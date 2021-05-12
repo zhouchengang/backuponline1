@@ -89,7 +89,7 @@ class HomeTwoFragment : Fragment(R.layout.fragment_home_two) {
                             for (item in it) {
                                 item?.path?.let { path ->
 //                                    adapter.addData(PicStu(getPicUrl(path), getCoverUrl(path)))
-                                    albumInfo.addPic(getPicUrl(path))
+                                    albumInfo.addPic(getPicUrl(path), getCoverUrl(path))
                                 }
                             }
                         }
