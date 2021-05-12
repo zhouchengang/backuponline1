@@ -1,7 +1,6 @@
 package com.zhouchengang.backuponline.album
 
-import com.zhouchengang.backuponline.album.net.AlbumBO
-import com.zhouchengang.backuponline.album.net.BaseResponseBean
+import com.zhouchengang.backuponline.album.net.*
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Query
@@ -23,5 +22,5 @@ interface GetService {
     fun getAlbum(
         @Query("userID") picfilename: String,
         @Query("password") picfile: String
-    ): Call<BaseResponseBean<AlbumBO>> //携带请求参数的 Get 请求
+    ): Call<BaseBean<GetStringBo>> //携带请求参数的 Get 请求
 }

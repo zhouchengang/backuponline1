@@ -5,7 +5,7 @@ import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.request.RequestOptions
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.viewholder.BaseViewHolder
-import com.zhouchengang.backuponline.album.Utils.getCover
+import com.zhouchengang.backuponline.album.UtilKotlin.getCoverUrl
 import com.zhouchengang.fileonlinelaunchapp.R
 
 /**
@@ -18,7 +18,7 @@ class PicGridOnlineAdapter : BaseQuickAdapter<String, BaseViewHolder>(R.layout.i
         //Log.e("ZCG",""+item);
         holder.setText(R.id.tv_album_name,""+item)
         Glide.with(context)
-            .load(getCover((item)))
+            .load(getCoverUrl((item)))
             .apply(RequestOptions().transform(CenterCrop()))
             .into(holder.getView(R.id.iv_album_cover))
     }

@@ -35,8 +35,5 @@ public class Utils {
         ret =  ret.substring(ret.indexOf("/")+1);
         return IMG_URL+ret;
     }
-    public static String getCover(String aliPath){
-        return aliPath+"?x-oss-process=image/resize,m_fill,h_100,w_100";
-    }
 
 }

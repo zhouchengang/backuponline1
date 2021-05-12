@@ -17,23 +17,23 @@ public class AlbumStu {
 
     public void addPic(String path) {
         for (DirStu item : dirList) {
-            if (item.dirName.equals(UtilKotlin.Companion.getDirByPath(path))) {
+            if (item.dirName.equals(UtilKotlin.getDirByPath(path))) {
                 item.addPic(path);
                 return;
             }
         }
-        dirList.add(new DirStu(UtilKotlin.Companion.getDirByPath(path)));
+        dirList.add(new DirStu(UtilKotlin.getDirByPath(path)));
         addPic(path);
     }
 
 
     public DirStu getDir(String path) {
         for (DirStu item : dirList) {
-            if (item.dirName.equals(UtilKotlin.Companion.getDirByPath(path))) {
+            if (item.dirName.equals(UtilKotlin.getDirByPath(path))) {
                 return item;
             }
         }
-        return new DirStu(UtilKotlin.Companion.getDirByPath(path));
+        return new DirStu(UtilKotlin.getDirByPath(path));
     }
 
     public class DirStu {
@@ -46,7 +46,7 @@ public class AlbumStu {
         }
 
         public void addPic(String path) {
-            if (UtilKotlin.Companion.getDirByPath(path).equals(dirName)) {
+            if (UtilKotlin.getDirByPath(path).equals(dirName)) {
                 picList.add(new PicStu(path));
             }
         }
@@ -67,8 +67,8 @@ public class AlbumStu {
 
         PicStu(String path) {
             this.path = path;
-            this.name = UtilKotlin.Companion.getNameByPath(path);
-            this.dir = UtilKotlin.Companion.getDirByPath(path);
+            this.name = UtilKotlin.getNameByPath(path);
+            this.dir = UtilKotlin.getDirByPath(path);
         }
     }
 
