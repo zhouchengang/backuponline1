@@ -3,6 +3,8 @@ package com.zhouchengang.backuponline.album
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
+import android.webkit.WebChromeClient
 import com.bumptech.glide.Glide
 import com.zhouchengang.backuponline.base.BaseActivity
 import com.zhouchengang.fileonlinelaunchapp.R
@@ -35,10 +37,33 @@ class PicActivity : BaseActivity(R.layout.activity_pic) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         parseIntent()
-        picPath?.let {
-            Glide.with(this)
-                .load(it)
-                .into(iv_content)
-        }
+//        picPath?.let {
+//            Glide.with(this)
+//                .load(it)
+//                .into(iv_content)
+//        }
+
+
+        //添加浏览器代理
+        webpage.setWebChromeClient(object : WebChromeClient() {
+            override fun onShowCustomView(view: View, callback: CustomViewCallback) {
+                super.onShowCustomView(view, callback);
+            }
+
+            override fun onHideCustomView() {
+                super.onHideCustomView();
+            }
+        })
+
+        webpage.loadUrl(picPath)
+        webpage.getSettings().setJavaScriptEnabled(true);
+        webpage.getSettings().setSupportZoom(true);
+
+
+        webpage.getSettings().setUseWideViewPort(true);
+        webpage.getSettings().setLoadWithOverviewMode(true);
+        webpage.getSettings().setAllowFileAccess(true);
+        webpage.getSettings().setJavaScriptCanOpenWindowsAutomatically(true);
+
     }
 }
