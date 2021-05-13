@@ -17,18 +17,18 @@ public class AlbumStu {
     }
 
     public void addPic(String path) {
-        addPic(path,path);
+        addPic(path, path);
     }
 
-    public void addPic(String path,String cover) {
+    public void addPic(String path, String cover) {
         for (DirStu item : dirList) {
             if (item.dirName.equals(UtilKotlin.getDirByPath(path))) {
-                item.addPic(path,cover);
+                item.addPic(path, cover);
                 return;
             }
         }
         dirList.add(new DirStu(UtilKotlin.getDirByPath(path)));
-        addPic(path,cover);
+        addPic(path, cover);
     }
 
 
@@ -50,9 +50,9 @@ public class AlbumStu {
             picList = new ArrayList<PicStu>();
         }
 
-        public void addPic(String path,String cover) {
+        public void addPic(String path, String cover) {
             if (UtilKotlin.getDirByPath(path).equals(dirName)) {
-                picList.add(new PicStu(path,cover));
+                picList.add(new PicStu(path, cover));
             }
         }
 

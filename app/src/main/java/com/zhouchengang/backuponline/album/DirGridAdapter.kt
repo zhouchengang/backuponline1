@@ -26,7 +26,7 @@ class DirGridAdapter :
             .into(holder.getView(R.id.iv_album_cover))
 
         holder.itemView.setOnClickListener { view ->
-            AlbumActivity.launch(context, item.dirName,item.picList)
+            AlbumActivity.launch(context, item.dirName, item.picList)
         }
     }
 }

@@ -9,13 +9,12 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.blankj.utilcode.util.ConvertUtils
 import com.google.gson.Gson
-import com.zhouchengang.backuponline.album.UtilKotlin.getCoverUrl
-import com.zhouchengang.backuponline.album.UtilKotlin.getPicUrl
-import com.zhouchengang.backuponline.album.net.*
+import com.zhouchengang.backuponline.album.UtilKotlin.Companion.getCoverUrl
+import com.zhouchengang.backuponline.album.UtilKotlin.Companion.getPicUrl
+import com.zhouchengang.backuponline.album.net.BaseBean
+import com.zhouchengang.backuponline.album.net.GetStringBo
 import com.zhouchengang.fileonlinelaunchapp.R
-import kotlinx.android.synthetic.main.activity_album.*
 import kotlinx.android.synthetic.main.fragment_home_one.*
-import kotlinx.android.synthetic.main.fragment_home_one.gridcycle
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

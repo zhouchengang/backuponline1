@@ -2,19 +2,16 @@ package com.zhouchengang.backuponline.album
 
 import android.content.Context
 import android.content.Intent
-import android.database.Cursor
 import android.graphics.Rect
 import android.os.Bundle
-import android.provider.MediaStore
 import android.view.View
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.blankj.utilcode.util.ConvertUtils
 import com.zhouchengang.backuponline.base.BaseActivity
 import com.zhouchengang.fileonlinelaunchapp.R
-import kotlinx.android.synthetic.main.activity_album.gridcycle
-import kotlinx.android.synthetic.main.activity_album.tv_tip
-import java.util.ArrayList
+import kotlinx.android.synthetic.main.activity_album.*
+import java.util.*
 
 /**
  * @auther zhouchengang
@@ -25,7 +22,7 @@ class AlbumActivity : BaseActivity(R.layout.activity_album) {
     companion object {
         const val DIR = "DIR"
         const val DIRSTU = "DirStu"
-        fun launch(context: Context, picPath: String?,dirStu: ArrayList<PicStu>?) {
+        fun launch(context: Context, picPath: String?, dirStu: ArrayList<PicStu>?) {
             dirStu?.let {
                 val intent = Intent(context, AlbumActivity::class.java)
                 intent.putExtra(DIR, picPath)
@@ -40,7 +37,7 @@ class AlbumActivity : BaseActivity(R.layout.activity_album) {
     private fun parseIntent() {
         intent?.apply {
             dir = getStringExtra(DIR)
-            dirStu = getSerializableExtra(DIRSTU) as  ArrayList<PicStu>
+            dirStu = getSerializableExtra(DIRSTU) as ArrayList<PicStu>
         }
     }
 

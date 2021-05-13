@@ -1,6 +1,7 @@
 package com.zhouchengang.backuponline.album
 
-import com.zhouchengang.backuponline.album.net.*
+import com.zhouchengang.backuponline.album.net.BaseBean
+import com.zhouchengang.backuponline.album.net.GetStringBo
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Query

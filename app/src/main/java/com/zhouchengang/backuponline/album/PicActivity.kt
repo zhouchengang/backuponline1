@@ -5,7 +5,6 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.webkit.WebChromeClient
-import com.bumptech.glide.Glide
 import com.zhouchengang.backuponline.base.BaseActivity
 import com.zhouchengang.fileonlinelaunchapp.R
 import kotlinx.android.synthetic.main.activity_pic.*
