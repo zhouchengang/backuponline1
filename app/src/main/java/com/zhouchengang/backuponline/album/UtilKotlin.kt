@@ -18,7 +18,24 @@ import java.util.*
 class UtilKotlin {
 
     companion object {
+        const val BASE_URL = "http://192.168.8.247:4545/"
+        const val IMG_URL = "http://47.240.168.158:8888/"
 
+        const val UP_URL = "http://192.168.0.113:3000/"
+
+        @JvmStatic
+        fun isDir(s: String?): Boolean {
+            return if (null == s || s.isEmpty()) {
+                false
+            } else s[s.length - 1] == '/'
+        }
+
+        @JvmStatic
+        fun isNotDir(s: String?): Boolean {
+            return if (null == s || s.isEmpty()) {
+                false
+            } else s[s.length - 1] != '/'
+        }
 
         var ip = "47.242.155.156"
         const val TAG = "uploadFile"

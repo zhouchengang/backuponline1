@@ -69,7 +69,7 @@ class HomeTwoFragment : Fragment(R.layout.fragment_home_two) {
     }
 
     fun getNormal() {
-        val re: Retrofit = Retrofit.Builder().baseUrl(Utils.UP_URL)
+        val re: Retrofit = Retrofit.Builder().baseUrl(UtilKotlin.UP_URL)
             .addConverterFactory(GsonConverterFactory.create()).build()
         val getService = re.create(GetService::class.java)
         getService.getAlbum("userid", "password")
