@@ -11,7 +11,7 @@ import androidx.fragment.app.FragmentPagerAdapter
  */
 class HomePagerAdapter(fm: FragmentManager, behavior: Int) : FragmentPagerAdapter(fm, behavior) {
 
-    var tabname: Array<String> = arrayOf("PAGE1", "PAGE2")
+    var tabname: Array<String> = arrayOf("相册", "云端", "混合")
 
     override fun getPageTitle(position: Int): CharSequence? {
         return tabname[position]
@@ -19,19 +19,26 @@ class HomePagerAdapter(fm: FragmentManager, behavior: Int) : FragmentPagerAdapte
 
     var vp1: Fragment? = null
     var vp2: Fragment? = null
+    var vp3: Fragment? = null
 
     override fun getItem(position: Int): Fragment {
         if (position == 0) {
             if (vp1 == null) {
-                vp1 = HomeOneFragment.newInstance()
+                vp1 = HomePageLocal()
             }
             return vp1 as Fragment
         }
         if (position == 1) {
             if (vp2 == null) {
-                vp2 = HomeTwoFragment.newInstance()
+                vp2 = HomePageRemote()
             }
             return vp2 as Fragment
+        }
+        if (position == 2) {
+            if (vp3 == null) {
+                vp3 = HomePageMix()
+            }
+            return vp3 as Fragment
         }
         return null as Fragment
     }
