@@ -1,11 +1,11 @@
 package com.zhouchengang.backuponline.album
 
 import android.Manifest
-import android.app.AlertDialog
-import android.graphics.Color
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.FragmentPagerAdapter
 import com.blankj.utilcode.util.PermissionUtils
+import com.zhouchengang.backuponline.MainApplication.Companion.loge
 import com.zhouchengang.backuponline.base.BaseActivity
 import com.zhouchengang.fileonlinelaunchapp.R
 import kotlinx.android.synthetic.main.activity_home.*
@@ -16,12 +16,16 @@ import kotlinx.android.synthetic.main.activity_home.*
  *  @date   2021/2/8
  *  @desc
  */
-class HomeActivity : BaseActivity(R.layout.activity_home, useSlideBack = false) {
+class HomeActivity :
+    BaseActivity(R.layout.activity_home, useSlideBack = false, useBroadcast = true) {
 
     override var TAG: String = "主页"
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         initView()
+        addMessageListener("HELLO") {
+            loge(it)
+        }
     }
 
     override fun onBackPressed() {
@@ -32,18 +36,22 @@ class HomeActivity : BaseActivity(R.layout.activity_home, useSlideBack = false) 
 //        startActivity(intent)
 
 //        MainApplication.destoryAll()
-        AlertDialog.Builder(this).apply {
-            setTitle("This is Dialog")
-            setMessage("Something important.")
-            setCancelable(false)
-            setPositiveButton("OK") { dialog, which ->
-                dialog.dismiss()
-            }
-            setNegativeButton("Cancel") { dialog, which ->
-                dialog.dismiss()
-            }
-            show()
-        }
+//        AlertDialog.Builder(this).apply {
+//            setTitle("This is Dialog")
+//            setMessage("Something important.")
+//            setCancelable(false)
+//            setPositiveButton("OK") { dialog, which ->
+//                dialog.dismiss()
+//            }
+//            setNegativeButton("Cancel") { dialog, which ->
+//                dialog.dismiss()
+//            }
+//            show()
+//        }
+
+        val intent = Intent("com.zhouchengang.backuponline.MY_BROADCAST")
+        intent.setPackage(packageName)
+        sendBroadcast(intent)
     }
 
     private fun initView() {

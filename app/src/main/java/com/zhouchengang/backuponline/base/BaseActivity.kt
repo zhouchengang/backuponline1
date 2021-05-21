@@ -14,6 +14,7 @@ import androidx.annotation.LayoutRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.iterator
 import com.gyf.immersionbar.ImmersionBar
+import com.zhouchengang.backuponline.MainApplication
 import com.zhouchengang.backuponline.MainApplication.Companion.loge
 import com.zhouchengang.backuponline.album.SlideBackConstraintLayout
 import com.zhouchengang.fileonlinelaunchapp.R
@@ -34,9 +35,10 @@ var BaseActivity.TAA: String
 
 class CustomReceiver : BroadcastReceiver() {
     override fun onReceive(context: Context, intent: Intent) {
-
+        loge("onReceive onReceive onReceive")
     }
 }
+
 
 open abstract class BaseActivity(
     @LayoutRes contentLayoutId: Int,
@@ -46,8 +48,13 @@ open abstract class BaseActivity(
     private val useBroadcast: Boolean = false
 ) : AppCompatActivity(contentLayoutId) {
     abstract var TAG: String
-    lateinit var timeChangeReceiver: CustomReceiver
+    lateinit var timeChangeReceiver: TimeChangeReceiver
 
+    inner class TimeChangeReceiver : BroadcastReceiver() {
+        override fun onReceive(context: Context, intent: Intent) {
+            onBoardCastReceived()
+        }
+    }
 
     fun onBoardCastReceived() {
         loge("onBoardCastReceived")
@@ -92,9 +99,17 @@ open abstract class BaseActivity(
         if (useBroadcast) {
             val intentFilter = IntentFilter()
             intentFilter.addAction("android.intent.action.TIME_TICK")
-            timeChangeReceiver = CustomReceiver()
+            timeChangeReceiver = TimeChangeReceiver()
             registerReceiver(timeChangeReceiver, intentFilter)
         }
+    }
+
+    fun addMessageListener(messageName: String, messageListener: (str: String) -> Unit) {
+        MainApplication.registerMessageListenerForActivity(this, messageName, messageListener)
+    }
+
+    fun sendMessage(messageName: String, message: String) {
+        MainApplication.responseMessageByMessage(messageName, message)
     }
 
     private fun getRootView(context: Activity): View? {

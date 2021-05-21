@@ -101,6 +101,9 @@ class AlbumActivity() : BaseActivity(R.layout.activity_album) {
 
 
         }
+
+
+        sendMessage("HELLO", "A tip from AlbumActivity")
     }
 
 }
