@@ -1,5 +1,6 @@
 package com.zhouchengang.backuponline.album
 
+import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
@@ -47,7 +48,7 @@ class PicActivity : BaseActivity(R.layout.activity_pic) {
 
 
         //添加浏览器代理
-        webpage.setWebChromeClient(object : WebChromeClient() {
+        webpage.webChromeClient = object : WebChromeClient() {
             override fun onShowCustomView(view: View, callback: CustomViewCallback) {
                 super.onShowCustomView(view, callback);
             }
@@ -55,17 +56,17 @@ class PicActivity : BaseActivity(R.layout.activity_pic) {
             override fun onHideCustomView() {
                 super.onHideCustomView();
             }
-        })
+        }
 
         webpage.loadUrl(picPath)
-        webpage.getSettings().setJavaScriptEnabled(true);
-        webpage.getSettings().setSupportZoom(true);
+        webpage.settings.javaScriptEnabled = true
+        webpage.settings.setSupportZoom(true)
 
 
-        webpage.getSettings().setUseWideViewPort(true);
-        webpage.getSettings().setLoadWithOverviewMode(true);
-        webpage.getSettings().setAllowFileAccess(true);
-        webpage.getSettings().setJavaScriptCanOpenWindowsAutomatically(true);
+        webpage.settings.useWideViewPort = true
+        webpage.settings.loadWithOverviewMode = true
+        webpage.settings.allowFileAccess = true
+        webpage.settings.javaScriptCanOpenWindowsAutomatically = true
 
     }
 }

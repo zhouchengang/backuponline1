@@ -1,7 +1,10 @@
 package com.zhouchengang.backuponline.base
 
 import android.app.Activity
+import android.content.BroadcastReceiver
 import android.content.Context
+import android.content.Intent
+import android.content.IntentFilter
 import android.graphics.Color
 import android.os.Bundle
 import android.view.View
@@ -11,6 +14,7 @@ import androidx.annotation.LayoutRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.iterator
 import com.gyf.immersionbar.ImmersionBar
+import com.zhouchengang.backuponline.MainApplication.Companion.loge
 import com.zhouchengang.backuponline.album.SlideBackConstraintLayout
 import com.zhouchengang.fileonlinelaunchapp.R
 import java.lang.reflect.Field
@@ -21,13 +25,34 @@ import java.lang.reflect.Field
  *  @date   2021/2/8
  *  @desc
  */
+
+var BaseActivity.TAA: String
+    get() = "ttttt"
+    set(value) {
+        TAA = value
+    }
+
+class CustomReceiver : BroadcastReceiver() {
+    override fun onReceive(context: Context, intent: Intent) {
+
+    }
+}
+
 open abstract class BaseActivity(
     @LayoutRes contentLayoutId: Int,
     private val useBlackStatusBarTextColor: Boolean = true,
     private val useSlideBack: Boolean = true,
-    private val useTransparentStatusBar: Boolean = true
+    private val useTransparentStatusBar: Boolean = true,
+    private val useBroadcast: Boolean = false
 ) : AppCompatActivity(contentLayoutId) {
     abstract var TAG: String
+    lateinit var timeChangeReceiver: CustomReceiver
+
+
+    fun onBoardCastReceived() {
+        loge("onBoardCastReceived")
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         overridePendingTransition(R.anim.activity_right_in, R.anim.anim_stay)
         super.onCreate(savedInstanceState)
@@ -36,19 +61,6 @@ open abstract class BaseActivity(
         if (useBlackStatusBarTextColor) {
             window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
         }
-
-//
-//        //配置滑动返回
-//        if (useSlideBack) {
-//            var config: SlidrConfig = SlidrConfig.Builder()
-//                .position(SlidrPosition.LEFT)
-//                .sensitivity(1f)
-//                .scrimColor(Color.BLACK)
-//                .scrimStartAlpha(0.6f)
-//                .scrimEndAlpha(0f)
-//                .build()
-//            slidrInterface = Slidr.attach(this, config)
-//        }
 
         if (useSlideBack) {
             for (item in (findViewById<View>(android.R.id.content) as ViewGroup)) {
@@ -75,6 +87,14 @@ open abstract class BaseActivity(
             getRootView(this)?.fitsSystemWindows = true
         }
 
+
+
+        if (useBroadcast) {
+            val intentFilter = IntentFilter()
+            intentFilter.addAction("android.intent.action.TIME_TICK")
+            timeChangeReceiver = CustomReceiver()
+            registerReceiver(timeChangeReceiver, intentFilter)
+        }
     }
 
     private fun getRootView(context: Activity): View? {
@@ -115,11 +135,6 @@ open abstract class BaseActivity(
         return statusBarHeight
     }
 
-//    override fun finish() {
-//        super.finish()
-//        overridePendingTransition(R.anim.anim_stay, R.anim.bottom_view_out)
-//    }
-
     override fun onBackPressed() {
         for (item in (findViewById<View>(android.R.id.content) as ViewGroup)) {
             if (item is SlideBackConstraintLayout) {
@@ -127,6 +142,13 @@ open abstract class BaseActivity(
                 return
             }
         }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        if (useBroadcast)
+            if (::timeChangeReceiver.isInitialized)
+                unregisterReceiver(timeChangeReceiver)
     }
 
     override fun toString(): String {
