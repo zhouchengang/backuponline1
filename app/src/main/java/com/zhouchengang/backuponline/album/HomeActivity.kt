@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.FragmentPagerAdapter
 import com.blankj.utilcode.util.PermissionUtils
+import com.zhouchengang.backuponline.MainApplication
 import com.zhouchengang.backuponline.base.BaseActivity
 import com.zhouchengang.fileonlinelaunchapp.R
 import kotlinx.android.synthetic.main.activity_home.*
@@ -17,6 +18,7 @@ import kotlinx.android.synthetic.main.activity_home.*
  */
 class HomeActivity : BaseActivity(R.layout.activity_home, useSlideBack = false) {
 
+    override var TAG: String = "主页"
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         initView()
@@ -24,10 +26,11 @@ class HomeActivity : BaseActivity(R.layout.activity_home, useSlideBack = false) 
 
     override fun onBackPressed() {
 //        super.onBackPressed()
-        val intent = Intent()
-        intent.action = Intent.ACTION_MAIN
-        intent.addCategory(Intent.CATEGORY_HOME)
-        startActivity(intent)
+//        val intent = Intent()
+//        intent.action = Intent.ACTION_MAIN
+//        intent.addCategory(Intent.CATEGORY_HOME)
+//        startActivity(intent)
+        MainApplication.destoryAll()
     }
 
     private fun initView() {

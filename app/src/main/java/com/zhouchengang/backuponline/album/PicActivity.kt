@@ -15,6 +15,9 @@ import kotlinx.android.synthetic.main.activity_pic.*
  * @time 11:15.
  */
 class PicActivity : BaseActivity(R.layout.activity_pic) {
+
+    override var TAG: String = "图片详情"
+
     companion object {
         const val PIC_PATH = "PIC_PATH"
         fun launch(context: Context, picPath: String?) {

@@ -18,7 +18,9 @@ import java.util.*
  * @date 2021/3/8
  * @time 11:15.
  */
-class AlbumActivity : BaseActivity(R.layout.activity_album) {
+class AlbumActivity() : BaseActivity(R.layout.activity_album) {
+    override var TAG: String = "文件夹"
+
     companion object {
         const val DIR = "DIR"
         const val DIRSTU = "DirStu"

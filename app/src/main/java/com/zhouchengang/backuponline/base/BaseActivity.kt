@@ -21,12 +21,13 @@ import java.lang.reflect.Field
  *  @date   2021/2/8
  *  @desc
  */
-open class BaseActivity(
+open abstract class BaseActivity(
     @LayoutRes contentLayoutId: Int,
     private val useBlackStatusBarTextColor: Boolean = true,
     private val useSlideBack: Boolean = true,
     private val useTransparentStatusBar: Boolean = true
 ) : AppCompatActivity(contentLayoutId) {
+    abstract var TAG: String
     override fun onCreate(savedInstanceState: Bundle?) {
         overridePendingTransition(R.anim.activity_right_in, R.anim.anim_stay)
         super.onCreate(savedInstanceState)
@@ -128,5 +129,8 @@ open class BaseActivity(
         }
     }
 
+    override fun toString(): String {
+        return TAG + super.toString()
+    }
 }
 
