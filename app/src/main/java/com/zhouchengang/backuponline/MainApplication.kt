@@ -24,6 +24,7 @@ class MainApplication : Application() {
             }
         }
 
+        //log工具
         fun loge(vararg obj: Any) {
             var objClone = obj.clone()
             if (!BuildConfig.DEBUG) return
@@ -37,6 +38,7 @@ class MainApplication : Application() {
         }
 
 
+        //传入Activity，和消息类型，和响应
         fun registerMessageListenerForActivity(
             activity: Activity,
             messageName: String,
